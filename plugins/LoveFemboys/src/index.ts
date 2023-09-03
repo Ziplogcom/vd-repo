@@ -72,12 +72,12 @@ commands.push(registerCommand({
                     sendReply(ctx.channel.id, "Incorrect sorting type. Valid options are\n`best`, `hot`, `new`, `rising`, `top`, `controversial`.", [])
                     return
                 }
-                let response = await fetch(`https://www.reddit.com/r/femboy/${sort}.json?limit=100`).then(res => res.json());
+                let response = await fetch(`https://www.reddit.com/r/immobile/${sort}.json?limit=100`).then(res => res.json());
                 if (!ctx.channel.nsfw_ && nsfw && storage.nsfwwarn && !(silent ?? true)) {
                     sendReply(ctx.channel.id, "This channel is not marked as NSFW\n(You can disable this check in plugin settings)", [])
                     return
                 }
-                if (nsfw) { response = await fetch(`https://www.reddit.com/r/femboys/${sort}.json?limit=100`).then(res => res.json()); }
+                if (nsfw) { response = await fetch(`https://www.reddit.com/r/immobile/${sort}.json?limit=100`).then(res => res.json()); }
                 response = response.data?.children?.[Math.floor(Math.random() * response.data?.children?.length)]?.data;
                 let author = await fetch(`https://www.reddit.com/u/${response?.author}/about.json`).then(res => res.json());
 
